@@ -1,0 +1,42 @@
+﻿<h2>Agregar Comida del Dia</h2>
+@using (Html.BeginForm("Crear", "Comida", FormMethod.Post))
+{
+    <p>
+        @Html.ActionLink("Volver al Listado", "Index", "Comidas")
+    </p>
+
+    <p class="form-control form-control-lg">
+        @Html.Label("Ingresar Nombre de Comida:") <br />
+        @Html.TextBox("comcom")
+    </p>
+    <p class="form-control form-control-lg">
+        @Html.DropDownList("diacom", new List<SelectListItem>
+        {
+            new SelectListItem{Text = "Lunes", Value = "Lunes"},
+            new SelectListItem{Text = "Martes", Value = "Martes"},
+            new SelectListItem{Text = "Miercoles", Value = "Miercoles"},
+            new SelectListItem{Text = "Jueves", Value = "Jueves"},
+            new SelectListItem{Text = "Viernes", Value = "Viernes"},
+            new SelectListItem{Text = "Sabado", Value = "Sabado"},
+            new SelectListItem{Text = "Domingo", Value = "Domingo"},
+        }, "Seleccione que dia es:")
+    </p>
+
+    <p class="form-control form-control-lg">
+        @Html.Label("Ingresar fecha:") <br />
+        <input type="date" id="fechcom" name="fechcom" pattern="\d{4}-\d{2}-\d{2}" min="2024-01-01" max="2024-12-31"/>
+    </p>
+    <p class="form-control form-control-lg">
+        @Html.Label("Ingresar autor:") <br />
+        @Html.TextBox("autor")
+    </p>
+    <p>
+        <input type="submit" value="Guardar" class="btn btn-primary" />
+    </p>
+    <p style="color:darkblue">
+        @ViewBag.mensaje
+    </p>
+    <p style="color:red">
+        @ViewBag.com agregada correctamente
+    </p>
+}

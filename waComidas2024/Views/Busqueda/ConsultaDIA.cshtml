@@ -1,0 +1,65 @@
+﻿@model IEnumerable<waComidas2024.Models.Comidas>
+
+<h2>Consulta de Comidas</h2>
+
+<p>
+    @Html.ActionLink("Volver al Listado", "Index", "Comidas")
+</p>
+
+
+@using (Html.BeginForm("ConsultaDIA", "Busqueda", FormMethod.Post))
+{
+    <p class="form-control me-2" type="search" placeholder="Search" aria-label="Search" >
+        @Html.Label("Ingresar el dia") <br />
+        @Html.TextBox("diacom")
+    </p>
+    <p>
+        <input class="btn btn-outline-success" type="submit" value="Buscar"/>
+    </p>
+    <p style="color:darkblue">
+        <strong>Se buscaron las comidas que fueron hechas los dias @ViewBag.day</strong>
+    </p>
+}
+
+<table class="table table-hover">
+    <tr class="table-light">
+        <th>
+            Codigo de Comida
+        </th>
+        <th>
+            Nombre de Comida
+        </th>
+        <th>
+            Dia de Preparacion
+        </th>
+        <th>
+            Fecha de Preparacion
+        </th>
+        <th>
+            Autor de la Comida
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="table-group-divider">
+            <td>
+                @Html.DisplayFor(modelItem => item.codcom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.comcom)
+            </td>
+            <td class="fw-bold">
+                @Html.DisplayFor(modelItem => item.diacom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechcom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.autor)
+            </td>
+        </tr>
+    }
+
+</table>
